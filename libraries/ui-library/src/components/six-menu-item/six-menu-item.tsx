@@ -69,8 +69,8 @@ export class SixMenuItem {
     return Promise.resolve(getTextContent(this.defaultSlot));
   }
 
-  private handleBlur = () => (this.hasFocus = false);
-  private handleFocus = () => (this.hasFocus = true);
+  private handleBlur = () => this.setActive(false);
+  private handleFocus = () => this.setActive(true);
   private handleMouseEnter = () => this.setActive(true);
   private handleMouseLeave = () => this.setActive(false);
   private handleCheckboxChange = () => {
