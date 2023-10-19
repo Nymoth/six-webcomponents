@@ -81,7 +81,7 @@ export class SixSelect {
    *
    * Default to `true`.
    */
-  @Prop() displayAsTags = true;
+  @Prop() displayAsTags = false;
 
   /** Set to true to disable the select control. */
   @Prop()

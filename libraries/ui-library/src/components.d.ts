@@ -1103,6 +1103,10 @@ export namespace Components {
         /**
           * Sets focus on the button.
          */
+        "setActive": (active: boolean) => Promise<void>;
+        /**
+          * Sets focus on the button.
+         */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * A unique value to store in the menu item. This can be used as a way to identify menu items when selected.

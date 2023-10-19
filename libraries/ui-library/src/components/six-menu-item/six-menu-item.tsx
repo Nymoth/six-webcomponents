@@ -31,6 +31,8 @@ export class SixMenuItem {
 
   @State() hasFocus = false;
 
+  @State() active = false;
+
   /** Set to true to draw the item in a checked state. */
   @Prop({ reflect: true }) checked = false;
 
@@ -55,6 +57,12 @@ export class SixMenuItem {
     this.menuItem?.blur();
   }
 
+  /** Sets focus on the button. */
+  @Method()
+  async setActive(active: boolean) {
+    this.active = active;
+  }
+
   /** Returns a text label based on the contents of the menu item's default slot. */
   @Method()
   getTextLabel() {
@@ -63,11 +71,11 @@ export class SixMenuItem {
 
   private handleBlur = () => (this.hasFocus = false);
   private handleFocus = () => (this.hasFocus = true);
-  private handleMouseEnter = () => this.setFocus({ preventScroll: true });
+  private handleMouseEnter = () => this.setActive(true);
+  private handleMouseLeave = () => this.setActive(false);
   private handleCheckboxChange = () => {
     this.host.dispatchEvent(new Event('click', { bubbles: true, cancelable: true }));
   };
-  private handleMouseLeave = () => this.removeFocus();
 
   render() {
     return (
@@ -79,6 +87,7 @@ export class SixMenuItem {
           'menu-item--checked': this.checked,
           'menu-item--disabled': this.disabled,
           'menu-item--focused': this.hasFocus,
+          'menu-item--active': this.active,
         }}
         role="menuitem"
         aria-disabled={this.disabled ? 'true' : 'false'}

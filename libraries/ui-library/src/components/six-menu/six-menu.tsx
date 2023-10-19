@@ -129,7 +129,7 @@ export class SixMenu {
       const slot = item.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
       const label = getTextContent(slot).toLowerCase().trim();
       if (label.substring(0, this.typeToSelectString.length) === this.typeToSelectString) {
-        item.setFocus();
+        item.setActive(true);
         break;
       }
     }
@@ -192,7 +192,7 @@ export class SixMenu {
   }
 
   private setActiveItem(item: HTMLSixMenuItemElement) {
-    item?.setFocus();
+    item?.setActive(true);
   }
 
   private handleClick = (event: MouseEvent) => {
