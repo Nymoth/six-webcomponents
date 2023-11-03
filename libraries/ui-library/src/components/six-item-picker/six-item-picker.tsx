@@ -468,6 +468,7 @@ export class SixItemPicker {
           }}
           onMouseDown={() => this.onMouseDownNext()}
           onMouseUp={() => this.onMouseUpNext()}
+          tabindex={0}
         >
           <six-icon size="large">expand_less</six-icon>
         </div>
@@ -482,6 +483,7 @@ export class SixItemPicker {
           }}
           onMouseDown={() => this.onMouseDownPrev()}
           onMouseUp={() => this.onMouseUpPrev()}
+          tabIndex={0}
         >
           <six-icon size="large">expand_more</six-icon>
         </div>
