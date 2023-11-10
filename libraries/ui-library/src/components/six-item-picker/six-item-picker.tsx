@@ -457,10 +457,31 @@ export class SixItemPicker {
     return this.value;
   }
 
+  private handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // prevent the default behavior of the Enter key (e.g., form submission)
+
+      if (event.target === this.upButton) {
+        this.nextItem();
+      } else if (event.target === this.downButton) {
+        this.previousItem();
+      }
+    }
+  }
+
+  private upButton!: HTMLDivElement;
+  private downButton!: HTMLDivElement;
+
   render() {
     return (
-      <div part="container" class="item_picker__container">
+      <div
+        part="container"
+        class="item_picker__container"
+        onKeyDown={(event) => this.handleKeyPress(event)}
+        tabindex="0" // Add tabindex to make the container focusable
+      >
         <div
+          ref={(el) => (this.upButton = el as HTMLDivElement)}
           part="up"
           class={{
             item_picker__btn: true,
@@ -476,6 +497,7 @@ export class SixItemPicker {
           {this.getFormattedValue()}
         </div>
         <div
+          ref={(el) => (this.downButton = el as HTMLDivElement)}
           part="down"
           class={{
             item_picker__btn: true,
