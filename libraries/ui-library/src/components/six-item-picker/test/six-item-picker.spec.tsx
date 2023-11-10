@@ -14,7 +14,7 @@ describe('six-item-picker', () => {
 <six-item-picker roundtrip="" step="1" value="0">
   <mock:shadow-root>
     <div class="item_picker__container" part="container">
-      <div class="item_picker__btn" part="up">
+      <div class="item_picker__btn" part="up" tabindex="0">
         <six-icon size="large">
           expand_less
         </six-icon>
@@ -22,7 +22,7 @@ describe('six-item-picker', () => {
       <div class="item_picker__content" part="content">
         0
       </div>
-      <div class="item_picker__btn" part="down">
+      <div class="item_picker__btn" part="down" tabindex="0">
         <six-icon size="large">
           expand_more
         </six-icon>
@@ -44,7 +44,7 @@ describe('six-item-picker', () => {
 <six-item-picker max="13" min="3" roundtrip="false" step="5" value="5">
   <mock:shadow-root>
     <div class="item_picker__container" part="container">
-      <div class="item_picker__btn" part="up">
+      <div class="item_picker__btn" part="up" tabindex="0">
         <six-icon size="large">
           expand_less
         </six-icon>
@@ -52,7 +52,7 @@ describe('six-item-picker', () => {
       <div class="item_picker__content" part="content">
         5
       </div>
-      <div class="item_picker__btn item_picker__btn--disabled" part="down">
+      <div class="item_picker__btn item_picker__btn--disabled" part="down" tabindex="0">
         <six-icon size="large">
           expand_more
         </six-icon>
@@ -75,7 +75,7 @@ describe('six-item-picker', () => {
 <six-item-picker max="k" min="c" roundtrip="false" step="1" type="letter" value="d">
   <mock:shadow-root>
     <div class="item_picker__container" part="container">
-      <div class="item_picker__btn" part="up">
+      <div class="item_picker__btn" part="up" tabindex="0">
         <six-icon size="large">
           expand_less
         </six-icon>
@@ -83,7 +83,7 @@ describe('six-item-picker', () => {
       <div class="item_picker__content" part="content">
         d
       </div>
-      <div class="item_picker__btn" part="down">
+      <div class="item_picker__btn" part="down" tabindex="0">
         <six-icon size="large">
           expand_more
         </six-icon>
