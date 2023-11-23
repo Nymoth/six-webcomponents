@@ -459,14 +459,96 @@ export class SixItemPicker {
 
   private handleKeyPress(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      event.preventDefault(); // prevent the default behavior of the Enter key (e.g., form submission)
+      event.preventDefault();
 
       if (event.target === this.upButton) {
         this.nextItem();
       } else if (event.target === this.downButton) {
         this.previousItem();
       }
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.nextItem();
+    } else if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.previousItem();
+    } else if (event.key === 'PageUp') {
+      event.preventDefault();
+      this.pageUp();
+    } else if (event.key === 'PageDown') {
+      event.preventDefault();
+      this.pageDown();
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      this.goToMin();
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      this.goToMax();
     }
+  }
+
+  private pageUp() {
+    if (this.isNumber()) {
+      this.changeValue({
+        isNextItemAllowed: () => !this.isNextNumberDisabled(),
+        getNextItem: () => Number(this.value) + 5 * this.step,
+        getRoundtripItem: () => Number(this.min),
+        isRoundtripPossible: () => this.min === undefined && this.roundtrip,
+      });
+    } else {
+      const value = String(this.value);
+      const minLetter = String(this.min);
+
+      this.changeValue({
+        isNextItemAllowed: () =>
+          minLetter === undefined || this.getStringItemIndex(value) > this.getStringItemIndex(minLetter),
+        getNextItem: () => this.getNextItemByOperation(add, 5),
+        getRoundtripItem: () => String(this.min),
+        isRoundtripPossible: () => this.min === undefined && this.roundtrip,
+      });
+    }
+  }
+
+  private pageDown() {
+    if (this.isNumber()) {
+      this.changeValue({
+        isNextItemAllowed: () => !this.isPreviousNumberDisabled(),
+        getNextItem: () => Number(this.value) - 5 * this.step,
+        getRoundtripItem: () => Number(this.max),
+        isRoundtripPossible: () => this.max === undefined && this.roundtrip,
+      });
+    } else {
+      const value = String(this.value);
+      const maxLetter = String(this.max);
+
+      this.changeValue({
+        isNextItemAllowed: () =>
+          maxLetter === undefined || this.getStringItemIndex(value) < this.getStringItemIndex(maxLetter),
+        getNextItem: () => this.getNextItemByOperation(subtract, 5),
+        getRoundtripItem: () => String(this.max),
+        isRoundtripPossible: () => this.max == null && this.roundtrip,
+      });
+    }
+  }
+
+  private goToMin() {
+    if (this.isNumber()) {
+      this.value = this.min ?? 0;
+    } else {
+      this.value = this._items[0];
+    }
+
+    this.sixChange.emit(this.value);
+  }
+
+  private goToMax() {
+    if (this.isNumber()) {
+      this.value = this.max ?? Infinity;
+    } else {
+      this.value = this.getLastStringItem();
+    }
+
+    this.sixChange.emit(this.value);
   }
 
   private upButton!: HTMLDivElement;
@@ -489,7 +571,7 @@ export class SixItemPicker {
           }}
           onMouseDown={() => this.onMouseDownNext()}
           onMouseUp={() => this.onMouseUpNext()}
-          tabindex="0"
+          tabindex="-1"
         >
           <six-icon size="large">expand_less</six-icon>
         </div>
@@ -505,7 +587,7 @@ export class SixItemPicker {
           }}
           onMouseDown={() => this.onMouseDownPrev()}
           onMouseUp={() => this.onMouseUpPrev()}
-          tabindex="0"
+          tabindex="-1"
         >
           <six-icon size="large">expand_more</six-icon>
         </div>

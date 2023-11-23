@@ -13,7 +13,7 @@ describe('six-item-picker', () => {
     expect(page.root).toEqualHtml(`
 <six-item-picker roundtrip="" step="1" value="0">
   <mock:shadow-root>
-    <div class="item_picker__container" part="container" tabindex="0">
+    <div class="item_picker__container" part="container" tabindex="-1">
       <div class="item_picker__btn" part="up" tabindex="0">
         <six-icon size="large">
           expand_less
@@ -44,7 +44,7 @@ describe('six-item-picker', () => {
 <six-item-picker max="13" min="3" roundtrip="false" step="5" value="5">
   <mock:shadow-root>
     <div class="item_picker__container" part="container" tabindex="0">
-      <div class="item_picker__btn" part="up" tabindex="0">
+      <div class="item_picker__btn" part="up">
         <six-icon size="large">
           expand_less
         </six-icon>
@@ -52,7 +52,7 @@ describe('six-item-picker', () => {
       <div class="item_picker__content" part="content">
         5
       </div>
-      <div class="item_picker__btn item_picker__btn--disabled" part="down" tabindex="0">
+      <div class="item_picker__btn item_picker__btn--disabled" part="down">
         <six-icon size="large">
           expand_more
         </six-icon>
