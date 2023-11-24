@@ -331,7 +331,7 @@ export class SixItemPicker {
     const numberOfItems = this._items.length;
     const nextIndex = ((nextIndexCandidate % numberOfItems) + numberOfItems) % numberOfItems;
     return this._items[nextIndex];
-  }  
+  }
 
   private changeValue(params: {
     getNextItem: () => number | string;
