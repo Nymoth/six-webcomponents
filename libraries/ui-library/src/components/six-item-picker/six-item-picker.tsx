@@ -325,13 +325,13 @@ export class SixItemPicker {
     });
   }
 
-  private getNextItemByOperation(operation: (a: number, b: number) => number) {
+  private getNextItemByOperation(operation: (a: number, b: number) => number, increment: number = this.step) {
     const value = String(this.value);
-    const nextIndexCandidate = operation(this.getStringItemIndex(value), this.step);
+    const nextIndexCandidate = operation(this.getStringItemIndex(value), increment);
     const numberOfItems = this._items.length;
     const nextIndex = ((nextIndexCandidate % numberOfItems) + numberOfItems) % numberOfItems;
     return this._items[nextIndex];
-  }
+  }  
 
   private changeValue(params: {
     getNextItem: () => number | string;
@@ -560,7 +560,7 @@ export class SixItemPicker {
         part="container"
         class="item_picker__container"
         onKeyDown={(event) => this.handleKeyPress(event)}
-        tabindex="0" // Add tabindex to make the container focusable
+        tabindex="0"
       >
         <div
           ref={(el) => (this.upButton = el as HTMLDivElement)}
