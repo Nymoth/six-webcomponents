@@ -3,11 +3,6 @@
 :host {
   display: block;
   font-family: var(--six-font-family);
-  
-  &:focus-visible {
-    outline: var(--six-focus-ring);
-    outline-offset: 0;
-  }
 }
 
 .timepicker {
@@ -43,11 +38,6 @@
 
   &__container {
     position: relative;
-
-    &:focus-visible {
-      outline: var(--six-focus-ring);
-      outline-offset: 0;
-    }
   }
 
   &__popup {
@@ -86,6 +76,7 @@
       padding-right: 0.5rem;
     }
   }
+}
 
 .input--empty .timepicker_clear {
   visibility: hidden;
