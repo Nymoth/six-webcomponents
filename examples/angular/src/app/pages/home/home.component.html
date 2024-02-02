@@ -1,10 +1,35 @@
 <div class="home">
   <h1>Demo</h1>
   <p>
-    An <b>Angular Demo App</b> using<six-button
-      type="link"
-      href="https://www.npmjs.com/package/@six-group/ui-library-angular"
-      >@six-group/ui-library-angular</six-button
-    >
+    An <b>Angular Demo App</b> using
+    <six-button type="link" href="https://www.npmjs.com/package/@six-group/ui-library-angular"
+      >@six-group/ui-library-angular
+    </six-button>
   </p>
+
+  <six-details summary="Toggle Me" open="true">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+    <span slot="summary-icon">
+      <six-tooltip class="doesnt-work">
+        <div slot="content">
+          {{ value$ | async }}
+        </div>
+
+        <six-icon *ngIf="(value$ | async)?.length! > 1" size="small">sick</six-icon>
+      </six-tooltip>
+
+      <six-tooltip class="works">
+        <div slot="content">
+          {{ value$ | async }}
+        </div>
+
+        <six-icon size="small" [hidden]="!((value$ | async)?.length! > 1)">favorite</six-icon>
+      </six-tooltip>
+    </span>
+  </six-details>
+
+  <six-button (click)="changeText()">Update Content</six-button>
+  <six-button (click)="clearText()">Clear Content</six-button>
 </div>
