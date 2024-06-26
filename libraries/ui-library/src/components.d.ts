@@ -281,10 +281,6 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Closes the datepicker dropdown after selection
-         */
-        "closeOnSelect": boolean;
-        /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
         "containingElement"?: HTMLElement;
@@ -337,11 +333,11 @@ export namespace Components {
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
-          * The maximum datetime allowed. Value must be a date object
+          * The maximum date allowed. Value must be a date object
          */
         "max"?: Date;
         /**
-          * The minimum datetime allowed. Value must be a date object
+          * The minimum date allowed. Value must be a date object
          */
         "min"?: Date;
         /**
@@ -380,10 +376,6 @@ export namespace Components {
           * Datepicker size.
          */
         "size": 'small' | 'medium' | 'large';
-        /**
-          * Set the type.
-         */
-        "type": 'date' | 'time' | 'date-time';
         /**
           * The value of the form field, which accepts a date object.
          */
@@ -3499,10 +3491,6 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Closes the datepicker dropdown after selection
-         */
-        "closeOnSelect"?: boolean;
-        /**
           * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
         "containingElement"?: HTMLElement;
@@ -3555,11 +3543,11 @@ declare namespace LocalJSX {
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | 'es';
         /**
-          * The maximum datetime allowed. Value must be a date object
+          * The maximum date allowed. Value must be a date object
          */
         "max"?: Date;
         /**
-          * The minimum datetime allowed. Value must be a date object
+          * The minimum date allowed. Value must be a date object
          */
         "min"?: Date;
         /**
@@ -3602,10 +3590,6 @@ declare namespace LocalJSX {
           * Datepicker size.
          */
         "size"?: 'small' | 'medium' | 'large';
-        /**
-          * Set the type.
-         */
-        "type"?: 'date' | 'time' | 'date-time';
         /**
           * The value of the form field, which accepts a date object.
          */
